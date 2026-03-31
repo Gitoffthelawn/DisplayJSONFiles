@@ -199,7 +199,7 @@ STDMETHODIMP CWinMergeScript::UnpackFile(BSTR fileSrc, BSTR fileDst, VARIANT_BOO
 
 	Document d;
 
-	if (d.ParseStream<kParseCommentsFlag>(is).HasParseError())
+	if (d.ParseStream<kParseCommentsFlag | kParseTrailingCommasFlag | kParseEscapedApostropheFlag | kParseNanAndInfFlag>(is).HasParseError())
 	{
 		*pbChanged = VARIANT_FALSE;
 		*pbSuccess = VARIANT_FALSE;
